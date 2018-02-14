@@ -6,20 +6,22 @@ catkin_simple()
 
 include(ExternalProject)
 
-set(VERSION 4.11.0)
-
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 
+set(VERSION 4.11)
 ExternalProject_Add(cgal_src
-  GIT_REPOSITORY git@github.com:CGAL/cgal.git
-  GIT_TAG releases/CGAL-4.11
+  GIT_REPOSITORY git@github.com:CGAL/cgal-public-dev.git
+  GIT_TAG gsoc2017-VSA-lingjie
   UPDATE_COMMAND ""
+  PATCH_COMMAND patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/vsa_dependency.patch
   CMAKE_ARGS
     -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}
     -DCMAKE_BUILD_TYPE=Release
     -DBUILD_SHARED_LIBS=ON
-  BUILD_COMMAND make
-  INSTALL_COMMAND make install
+    -WITH_examples=ON
+    -WITH_demos=ON
+  BUILD_COMMAND $(MAKE)
+  INSTALL_COMMAND $(MAKE) install
 )
 
 cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
