@@ -11,15 +11,15 @@ file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 set(VERSION 4.11)
 ExternalProject_Add(cgal_src
   GIT_REPOSITORY git@github.com:CGAL/cgal-public-dev.git
-  GIT_TAG gsoc2017-VSA-lingjie
+  GIT_TAG VSA-lingjie
   UPDATE_COMMAND ""
-  PATCH_COMMAND patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/vsa_dependency.patch
+  #PATCH_COMMAND patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/vsa_dependency.patch
   CMAKE_ARGS
     -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}
     -DCMAKE_BUILD_TYPE=Release
     -DBUILD_SHARED_LIBS=ON
-    -WITH_examples=ON
-    -WITH_demos=ON
+    -DWITH_CGAL_Qt5:BOOL=OFF
+    -DWITH_CGAL_ImageIO:BOOL=OFF
   BUILD_COMMAND $(MAKE)
   INSTALL_COMMAND $(MAKE) install
 )
