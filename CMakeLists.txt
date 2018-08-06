@@ -11,7 +11,7 @@ file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 set(VERSION 4.11)
 ExternalProject_Add(cgal_src
   GIT_REPOSITORY git@github.com:CGAL/cgal-public-dev.git
-  GIT_TAG VSA-lingjie
+  GIT_TAG 8933fbce58a0fd57d1c0b02c735fa41a5ba594a3
   UPDATE_COMMAND ""
   #PATCH_COMMAND patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/vsa_dependency.patch
   CMAKE_ARGS
