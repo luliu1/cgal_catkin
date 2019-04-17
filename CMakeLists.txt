@@ -11,7 +11,7 @@ set(VERSION 4.11.0)
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 
 ExternalProject_Add(cgal_src
-  GIT_REPOSITORY git@github.com:aboudev/cgal.git
+  GIT_REPOSITORY https://github.com/aboudev/cgal.git
   GIT_TAG VSA-lingjie
   UPDATE_COMMAND ""
   CMAKE_ARGS
